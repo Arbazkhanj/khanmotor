@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan Automobile Diagnostic Center & Garage - Advanced ECU & OBD Specialist - Basti</title>
+    <style>
+        /* --- previous CSS same --- */
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+        header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:1rem 0}
+        .logo{font-size:1.8rem;font-weight:bold}
+        .logo span{color:#ff6600;font-size:.9rem;display:block}
+        nav ul{display:flex;list-style:none;flex-wrap:wrap}
+        nav ul li{margin-left:25px}
+        nav ul li a{color:#fff;text-decoration:none;font-weight:500;transition:color .3s}
+        nav ul li a:hover{color:#ffd700}
+
+        /* hero */
+        .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;margin-top:60px;position:relative;overflow:hidden}
+        .slider{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}
+        .slide{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease-in-out}
+        .slide.active{opacity:1}
+        .slide:nth-child(1){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920')}
+        .slide:nth-child(2){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920')}
+        .slide:nth-child(3){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920')}
+        .slide:nth-child(4){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920')}
+        .hero-content{position:relative;z-index:1;max-width:900px;padding:0 20px}
+        .hero-content h1{font-size:3.5rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
+        .hero-content h2{font-size:2.2rem;color:#ff6600;margin-bottom:1.5rem;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
+        .hero-content p{font-size:1.3rem;margin-bottom:1.5rem;text-shadow:1px 1px 2px rgba(0,0,0,.5)}
+        .hero-content .phone{font-size:1.8rem;margin:20px 0;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
+        .cta-button{background:#ff6600;color:#fff;padding:15px 40px;font-size:1.2rem;border:none;border-radius:50px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .3s,box-shadow .3s;margin:10px}
+        .cta-button:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(255,102,0,.3)}
+        .cta-button.secondary{background:transparent;border:2px solid #fff}
+        .cta-button.secondary:hover{background:#fff;color:#1e3c72}
+        .slider-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:2}
+        .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .3s}
+        .dot.active{background:#ff6600}
+
+        /* care */
+        .features-care{padding:80px 0;background:#f8f9fa}
+        .section-title{text-align:center;font-size:2.5rem;margin-bottom:3rem;color:#1e3c72}
+        .section-title span{color:#ff6600}
+        .care-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px}
+        .care-card{background:#fff;padding:40px 30px;border-radius:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
+        .care-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.15)}
+        .care-icon{width:100px;height:100px;background:linear-gradient(135deg,#ff6600,#ff8533);border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;font-weight:bold}
+        .care-card h3{font-size:1.8rem;margin-bottom:15px;color:#1e3c72}
+
+        /* truck brands --- NEW CENTER SLIDER --- */
+        .truck-brands{padding:80px 0;background:#fff}
+        .truck-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px}
+        .truck-card{background:#f8f9fa;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;text-align:center}
+        .truck-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+        .img-slider{position:relative;width:100%;height:200px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
+        .img-slider img{position:absolute;max-width:90%;max-height:90%;object-fit:contain;opacity:0;transition:opacity 1.2s ease-in-out}
+        .img-slider img.active{opacity:1}
+        .truck-name{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:20px;font-size:1.5rem;font-weight:bold;text-transform:uppercase;letter-spacing:2px}
+
+        /* services */
+        .diagnostic-services{padding:80px 0;background:#f8f9fa}
+        .service-category{background:#fff;margin-bottom:30px;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+        .service-header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:25px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+        .service-header h3{font-size:1.5rem;display:flex;align-items:center;gap:15px}
+        .service-number{background:#ff6600;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem}
+        .service-content{padding:30px}
+        .service-content ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px}
+        .service-content li{padding:15px;background:#f8f9fa;border-left:4px solid #ff6600;border-radius:5px;font-size:1.1rem}
+        .service-content li strong{color:#1e3c72;display:block;margin-bottom:5px}
+
+        /* why choose */
+        .why-choose{padding:80px 0;background:#fff}
+        .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+        .why-card{background:#f8f9fa;padding:35px;border-radius:10px;border-top:5px solid #1e3c72;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+        .why-card h3{color:#1e3c72;margin-bottom:15px;font-size:1.4rem}
+
+        /* tools */
+        .tools{padding:80px 0;background:#f8f9fa}
+        .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
+        .tool-item{background:#fff;padding:30px;border-radius:10px;text-align:center;border:2px solid #e0e0e0;transition:all .3s}
+        .tool-item:hover{border-color:#ff6600;transform:translateY(-5px)}
+        .tool-icon{font-size:3rem;margin-bottom:15px}
+
+        /* contact */
+        .contact{padding:80px 0;background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff}
+        .contact-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px}
+        .contact-info h3{font-size:1.8rem;margin-bottom:20px}
+        .contact-info p{margin-bottom:15px;display:flex;align-items:flex-start;gap:10px;font-size:1.1rem}
+        .contact-info strong{min-width:120px;display:inline-block;color:#ff6600}
+        .highlight-box{background:rgba(255,102,0,.2);border:2px solid #ff6600;padding:20px;border-radius:10px;margin-top:20px}
+        .map{background:rgba(255,255,255,.1);padding:20px;border-radius:10px;height:400px;display:flex;align-items:center;justify-content:center}
+        .map iframe{width:100%;height:100%;border:0;border-radius:10px}
+
+        /* footer */
+        footer{background:#0a192f;color:#fff;text-align:center;padding:30px 0}
+        .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:20px;text-align:left}
+        .footer-section h4{color:#ff6600;margin-bottom:15px}
+        .footer-section ul{list-style:none}
+        .footer-section li{margin-bottom:8px}
+
+        /* responsive */
+        @media(max-width:768px){.hero-content h1{font-size:2.2rem}.hero-content h2{font-size:1.6rem}.hero-content p{font-size:1.1rem}.hero-content .phone{font-size:1.4rem}nav ul{display:none}.logo{font-size:1.5rem}.service-content ul{grid-template-columns:1fr}.truck-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}}
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <nav class="container">
+    <div class="logo">Khan Automobile <span>Advanced Diagnostic Center</span></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#care">CARE</a></li>
+      <li><a href="#trucks">Trucks</a></li>
+      <li><a href="#diagnostics">Diagnostics</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="slider">
+    <div class="slide active"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Khan Automobile Diagnostic Center</h1>
+    <h2>🔧 Advanced ECU & OBD Specialist 🔧</h2>
+    <p>Basti ka No.1 Car Diagnostic Center - Engine Diagnosis, ECU Programming, OBD Scanning, Electrical Fault Finding & All Advanced Computer Diagnostics</p>
+    <p class="phone">📞 Call Now: 8108820983</p>
+    <a href="tel:8108820983" class="cta-button">Call for Emergency</a>
+    <a href="#diagnostics" class="cta-button secondary">View Services</a>
+  </div>
+  <div class="slider-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+</section>
+
+<!-- CARE -->
+<section id="care" class="features-care">
+  <div class="container">
+    <h2 class="section-title">We <span>CARE</span> for You</h2>
+    <div class="care-grid">
+      <div class="care-card">
+        <div class="care-icon">C</div><h3>Convenient</h3><p>Free pick-up and drop services for your ease & convenience</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">A</div><h3>Affordable</h3><p>Competitive pricing with cost-effective diagnostic solutions</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">R</div><h3>Reliable</h3><p>Accurate diagnosis with advanced scanner tools & equipment</p>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">E</div><h3>Efficient</h3><p>Swift diagnostic services to get you back on the road quickly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUCK BRANDS - NEW CENTER SLIDER -->
+<section id="trucks" class="truck-brands">
+  <div class="container">
+    <h2 class="section-title">Heavy Vehicle <span>Diagnostic Services</span></h2>
+    <p style="text-align:center;margin-bottom:40px;font-size:1.2rem;color:#666;">We provide expert diagnostic services for all major truck and commercial vehicle brands</p>
+
+    <div class="truck-grid">
+      <!-- TATA -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="1.jpg" alt="TATA">
+          <img src="2.jpg" alt="TATA">
+          <img src="3.jpg" alt="TATA">
+          <img src="4.jpg" alt="TATA">
+          <img src="5.jpg" alt="TATA">
+        </div>
+        <div class="truck-name">TATA</div>
+      </div>
+
+      <!-- ASHOK LEYLAND -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="6.jpg" alt="ASHOK LEYLAND">
+          <img src="7.jpg" alt="ASHOK LEYLAND">
+          <img src="8.jpg" alt="ASHOK LEYLAND">
+          <img src="9.jpg" alt="ASHOK LEYLAND">
+          <img src="10.jpg" alt="ASHOK LEYLAND">
+        </div>
+        <div class="truck-name">ASHOK LEYLAND</div>
+      </div>
+
+      <!-- MAHINDRA -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="11.jpg" alt="Mahindra">
+          <img src="12.jpg" alt="Mahindra">
+          <img src="13.jpg" alt="Mahindra">
+          <img src="14.jpg" alt="Mahindra">
+          <img src="15.jpg" alt="Mahindra">
+        </div>
+        <div class="truck-name">MAHINDRA</div>
+      </div>
+      <!-- JCB -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="16.jpg" alt="JCB">
+          <img src="17.jpg" alt="JCB">
+          <img src="18.jpg" alt="JCB">
+          <img src="19.jpg" alt="JCB">
+          <img src="20.jpg" alt="JCB">
+        </div>
+        <div class="truck-name">JCB</div>
+      </div>
+      <!-- EICHER -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="21.jpg" alt="EICHER">
+          <img src="22.jpg" alt="EICHER">
+          <img src="23.jpg" alt="EICHER">
+          <img src="24.jpg" alt="EICHER">
+          <img src="25.jpg" alt="EICHER">
+        </div>
+        <div class="truck-name">EICHER</div>
+      </div>
+
+      <!-- BHARATBENZ -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="26.jpg" alt="BHARATBENZ">
+          <img src="27.jpg" alt="BHARATBENZ">
+          <img src="28.jpg" alt="BHARATBENZ">
+          <img src="29.jpg" alt="BHARATBENZ">
+          <img src="30.jpg" alt="BHARATBENZ">
+        </div>
+        <div class="truck-name">BHARATBENZ</div>
+      </div>
+
+      <!-- HYUNDAI -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="31.jpg" alt="HYUNDAI">
+          <img src="32.jpg" alt="HYUNDAI">
+          <img src="33.jpg" alt="HYUNDAI">
+          <img src="34.jpg" alt="HYUNDAI">
+          <img src="35.jpg" alt="HYUNDAI">
+        </div>
+        <div class="truck-name">HYUNDAI</div>
+      </div>
+
+      <!-- MERCEDES-BENZ -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="36.jpg" alt="MERCEDES-BENZ">
+          <img src="37.jpg" alt="MERCEDES-BENZ">
+          <img src="38.jpg" alt="MERCEDES-BENZ">
+          <img src="39.jpg" alt="MERCEDES-BENZ">
+          <img src="40.jpg" alt="MERCEDES-BENZ">
+        </div>
+        <div class="truck-name">MERCEDES-BENZ</div>
+      </div>
+
+      <!-- MAN -->
+      <div class="truck-card">
+        <div class="img-slider">
+          <img src="41.jpg" alt="MAN">
+          <img src="42.jpg" alt="MAN">
+          <img src="43.jpg" alt="MAN">
+          <img src="44.jpg" alt="MAN">
+          <img src="45.jpg" alt="MAN">
+        </div>
+        <div class="truck-name">MAN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diagnostic Services -->
+<section id="diagnostics" class="diagnostic-services">
+  <div class="container">
+    <h2 class="section-title">Advanced <span>Diagnostic Services</span></h2>
+    <p style="text-align:center;margin-bottom:40px;font-size:1.2rem;color:#666;">हमारे पास सभी तरह के modern diagnostic tools और experienced technicians हैं जो आपकी car की हर problem का सही diagnosis करते हैं।</p>
+
+    <!-- 1 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">1</span> Engine Diagnosis</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>🔍 Engine Check-Light Analysis</strong>Engine check-light का सही कारण ढूँढना और fault codes read करना</li>
+          <li><strong>⚠️ Misfire & Knocking Detection</strong>Misfire, knocking, power loss जैसी problems का diagnosis</li>
+          <li><strong>⛽ Fuel Injection System</strong>Fuel injection system की complete जाँच और cleaning</li>
+          <li><strong>📡 Sensor Testing</strong>O2 sensor, MAP sensor, MAF sensor आदि की testing और calibration</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">2</span> ECU / ECM / PCM Diagnosis</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>💻 ECU Scanning</strong>Advanced scanner tool से ECU scan करना</li>
+          <li><strong>📝 Error Codes</strong>Fault codes पढ़ना, interpret करना और clear करना</li>
+          <li><strong>🔌 ECU Wiring Check</strong>ECU wiring, grounding, short circuit की जाँच</li>
+          <li><strong>🔄 ECU Programming</strong>ECU programming और reset (basic level)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">3</span> Electrical & Electronics</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>🔋 Battery & Alternator</strong>Battery, alternator, starter motor की testing</li>
+          <li><strong>🔍 Wiring Harness</strong>Wiring harness में fault finding और repair</li>
+          <li><strong>⚡ Relay & Fuse</strong>Relay, fuse, switch diagnosis और replacement</li>
+          <li><strong>🌐 CAN Bus System</strong>CAN bus system basic checking और diagnosis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">4</span> OBD (On-Board Diagnostics)</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>🔌 OBD-II Scanner</strong>Professional OBD-II scanner use करना</li>
+          <li><strong>📊 Live Data Reading</strong>Real-time live data reading और analysis</li>
+          <li><strong>📸 Freeze Frame Data</strong>Freeze frame data समझना और diagnose करना</li>
+          <li><strong>🌿 Emission Diagnosis</strong>Emission related faults का diagnosis और repair</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">5</span> Sensor & Actuator Testing</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>📡 Critical Sensors</strong>TPS, CKP, CMP sensors testing और replacement</li>
+          <li><strong>⚙️ Injectors & Coils</strong>Injectors, ignition coils की testing</li>
+          <li><strong>🎛️ EGR & Throttle</strong>EGR valve, throttle body cleaning और repair</li>
+          <li><strong>📈 Advanced Tools</strong>Multimeter, oscilloscope (basic) use करना</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">6</span> Transmission Diagnosis (Basic)</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>⚙️ Auto/AMT/CVT</strong>Automatic, AMT, CVT faults diagnosis</li>
+          <li><strong>🔄 Gear Issues</strong>Gear shift problems का diagnosis</li>
+          <li><strong>📋 Error Codes</strong>Transmission related error codes reading</li>
+          <li><strong>🔧 Fluid Check</strong>Transmission fluid level और quality check</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">7</span> ABS, Airbag & Safety Systems</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>🛑 ABS Diagnosis</strong>ABS sensor faults और hydraulic issues</li>
+          <li><strong>💥 Airbag System</strong>Airbag warning light diagnosis और reset</li>
+          <li><strong>🚗 Brake Electronics</strong>Brake electronics और sensors diagnosis</li>
+          <li><strong>🛡️ Safety Check</strong>Complete safety systems testing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">8</span> AC & Climate Control Diagnosis</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>❄️ AC Cooling</strong>AC cooling issues का electronic diagnosis</li>
+          <li><strong>🌡️ Sensors</strong>Pressure sensor, blower motor faults</li>
+          <li><strong>🎛️ Climate Control</strong>Climate control electronics diagnosis</li>
+          <li><strong>🔧 Gas & Leak</strong>Refrigerant level और leak detection</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">9</span> Hybrid / EV (Basic to Advanced)</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>⚡ High Voltage Safety</strong>High voltage system safety checks</li>
+          <li><strong>🔋 BMS</strong>Battery Management System diagnosis</li>
+          <li><strong>🔄 Inverter & Motor</strong>Inverter और motor fault diagnosis</li>
+          <li><strong>📊 Charging System</strong>EV charging system testing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="service-category">
+      <div class="service-header"><h3><span class="service-number">10</span> Software & Updates</h3></div>
+      <div class="service-content">
+        <ul>
+          <li><strong>💾 ECU Reprogramming</strong>ECU reprogramming (OEM level)</li>
+          <li><strong>🔄 Software Updates</strong>Software update issues resolution</li>
+          <li><strong>🔑 Key Coding</strong>Immobilizer / key coding (authorized level)</li>
+          <li><strong>🆕 Latest Updates</strong>Manufacturer software updates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose -->
+<section id="why" class="why-choose">
+  <div class="container">
+    <h2 class="section-title">Why Choose <span>Us?</span></h2>
+    <div class="why-grid">
+      <div class="why-card"><h3>🔧 Expert Technicians</h3><p>Certified technicians with specialized training in modern car diagnostics, ECU programming, and electrical systems.</p></div>
+      <div class="why-card"><h3>💻 Latest Technology</h3><p>Investment in latest diagnostic tools, scanners, and software to handle all modern cars including luxury and EVs.</p></div>
+      <div class="why-card"><h3>📊 Accurate Diagnosis</h3><p>We don't guess - we diagnose! Exact problem identification saves your time and money on unnecessary repairs.</p></div>
+      <div class="why-card"><h3>🔍 Transparent Process</h3><p>Complete transparency in diagnosis - we show you the fault codes, live data, and explain everything in simple language.</p></div>
+      <div class="why-card"><h3>⚡ Quick Service</h3><p>Most diagnoses completed within 1-2 hours. Emergency services available for critical issues.</p></div>
+      <div class="why-card"><h3>💰 Fair Pricing</h3><p>Competitive diagnostic charges with no hidden costs. Pay only for what your car actually needs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section id="tools" class="tools">
+  <div class="container">
+    <h2 class="section-title">Our <span>Equipment</span></h2>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-icon">🔌</div><h3>OBD-II Scanner</h3><p>Latest generation diagnostic scanners for all car brands</p></div>
+      <div class="tool-item"><div class="tool-icon">💻</div><h3>ECU Programming Tools</h3><p>Professional ECU programming और flashing equipment</p></div>
+      <div class="tool-item"><div class="tool-icon">📊</div><h3>Multimeter & Oscilloscope</h3><p>Advanced electrical testing और waveform analysis</p></div>
+      <div class="tool-item"><div class="tool-icon">🔋</div><h3>Battery Tester</h3><p>Digital battery और charging system analyzer</p></div>
+      <div class="tool-item"><div class="tool-icon">🌡️</div><h3>AC Pressure Gauges</h3><p>Professional AC diagnosis और refrigerant handling</p></div>
+      <div class="tool-item"><div class="tool-icon">⚡</div><h3>EV/Hybrid Tools</h3><p>High voltage safety equipment for electric vehicles</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title" style="color:#fff">Contact <span style="color:#ff6600">Us</span></h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>📞 Get In Touch</h3>
+        <p><strong>Mobile:</strong> 8108820983</p>
+        <p><strong>Email:</strong> mohdirfankhan7861@gmail.com</p>
+        <p><strong>Address:</strong> District Hospital Gate No. 3, Khan Jan Seva Kendra, Basti, Uttar Pradesh</p>
+        <p><strong>Timing:</strong> Mon-Sat: 9 AM - 7 PM | Sun: 10 AM - 4 PM</p>
+        <p><strong>Emergency:</strong> 24/7 Breakdown Assistance Available</p>
+        <div class="highlight-box">
+          <h4 style="color:#ff6600;margin-bottom:10px;">We Diagnose All Brands:</h4>
+          <p>Cars: Maruti, Hyundai, Honda, Toyota, Tata, Mahindra, Kia, Renault, Nissan, Volkswagen, Ford, Chevrolet, Skoda, Mercedes, BMW, Audi, Jaguar, Land Rover, Volvo, Electric Vehicles</p>
+          <p style="margin-top:10px;">Trucks: Tata, Ashok Leyland, Mahindra, Eicher, BharatBenz, Hyundai, Mercedes-Benz, MAN</p>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3562.123456789!2d82.1234567!3d26.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1s0x0%3A0x0!2zMjbCsDA3JzI0LjQiTiA4MsKwMDcnMjQuNSJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0;border-radius:10px" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section"><h4>Services</h4><ul><li>Engine Diagnosis</li><li>ECU Programming</li><li>OBD Scanning</li><li>Electrical Repair</li><li>ABS & Airbag</li></ul></div>
+      <div class="footer-section"><h4>Contact</h4><ul><li>📞 8108820983</li><li>✉️ mohdirfankhan7861@gmail.com</li><li>📍 District Hospital Gate No. 3</li><li>🏙️ Basti, Uttar Pradesh</li></ul></div>
+      <div class="footer-section"><h4>Timings</h4><ul><li>Mon-Sat: 9 AM - 7 PM</li><li>Sunday: 10 AM - 4 PM</li><li>Emergency: 24/7</li></ul></div>
+    </div>
+    <hr style="border:1px solid #333;margin:20px 0">
+    <p>&copy; 2024 Khan Automobile Diagnostic Center & Garage, Basti. All Rights Reserved.</p>
+    <p>Basti ka No.1 Advanced Car & Truck Diagnostic Center | ECU Specialist | OBD Expert</p>
+    <p style="margin-top:10px">🔧 Any Vehicle, Any Problem, Right Diagnosis - 8108820983 🔧</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+/* hero slider */
+let currentIndex=0;const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot'),totalSlides=slides.length;
+function showSlide(index){slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[index].classList.add('active');dots[index].classList.add('active');}
+function nextSlide(){currentIndex=(currentIndex+1)%totalSlides;showSlide(currentIndex);}
+function currentSlide(index){currentIndex=index;showSlide(currentIndex);}
+setInterval(nextSlide,4000);
+
+/* truck card image-slider */
+document.querySelectorAll('.img-slider').forEach(slider=>{
+  const imgs=slider.querySelectorAll('img');let i=0;
+  imgs[0].classList.add('active');
+  setInterval(()=>{
+    imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');
+  },3000);
+});
+</script>
+</body>
+</html>
