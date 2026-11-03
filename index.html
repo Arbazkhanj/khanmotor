@@ -1,508 +1,829 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khan Automobile Diagnostic Center & Garage - Advanced ECU & OBD Specialist - Basti</title>
-    <style>
-        /* --- previous CSS same --- */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-        header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-        .container{max-width:1200px;margin:0 auto;padding:0 20px}
-        nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:1rem 0}
-        .logo{font-size:1.8rem;font-weight:bold}
-        .logo span{color:#ff6600;font-size:.9rem;display:block}
-        nav ul{display:flex;list-style:none;flex-wrap:wrap}
-        nav ul li{margin-left:25px}
-        nav ul li a{color:#fff;text-decoration:none;font-weight:500;transition:color .3s}
-        nav ul li a:hover{color:#ffd700}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khan Automobile Diagnostic Center &amp; Garage – Advanced ECU &amp; OBD Specialist – Basti</title>
+  <meta name="description" content="Basti ka No.1 car &amp; truck diagnostic center. Engine diagnosis, ECU programming, OBD scanning, electrical fault finding, ABS/Airbag, AC, EV diagnostics. Call 8108820983.">
+  <meta name="theme-color" content="#0A0F1A">
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root{
+      --bg:#0A0F1A;
+      --surface:#111827;
+      --surface-2:#172033;
+      --surface-3:#1E293B;
+      --border:rgba(255,255,255,.09);
+      --border-strong:rgba(255,255,255,.16);
+      --text:#E8EDF5;
+      --text-muted:#A3AFC2;
+      --primary:#FF6B1A;
+      --primary-hover:#FF8340;
+      --on-primary:#0A0F1A;
+      --accent:#3B82F6;
+      --success:#22C55E;
+      --whatsapp:#25D366;
+      --radius-sm:8px;
+      --radius:16px;
+      --radius-lg:24px;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+      --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 24px 48px rgba(0,0,0,.4);
+      --font-display:'Barlow Condensed',system-ui,sans-serif;
+      --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans Devanagari',sans-serif;
+      --header-h:72px;
+      --ease:cubic-bezier(.2,.7,.2,1);
+    }
 
-        /* hero */
-        .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;margin-top:60px;position:relative;overflow:hidden}
-        .slider{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}
-        .slide{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease-in-out}
-        .slide.active{opacity:1}
-        .slide:nth-child(1){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920')}
-        .slide:nth-child(2){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920')}
-        .slide:nth-child(3){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920')}
-        .slide:nth-child(4){background-image:linear-gradient(rgba(30,60,114,.85),rgba(42,82,152,.85)),url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920')}
-        .hero-content{position:relative;z-index:1;max-width:900px;padding:0 20px}
-        .hero-content h1{font-size:3.5rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
-        .hero-content h2{font-size:2.2rem;color:#ff6600;margin-bottom:1.5rem;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
-        .hero-content p{font-size:1.3rem;margin-bottom:1.5rem;text-shadow:1px 1px 2px rgba(0,0,0,.5)}
-        .hero-content .phone{font-size:1.8rem;margin:20px 0;text-shadow:2px 2px 4px rgba(0,0,0,.5)}
-        .cta-button{background:#ff6600;color:#fff;padding:15px 40px;font-size:1.2rem;border:none;border-radius:50px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .3s,box-shadow .3s;margin:10px}
-        .cta-button:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(255,102,0,.3)}
-        .cta-button.secondary{background:transparent;border:2px solid #fff}
-        .cta-button.secondary:hover{background:#fff;color:#1e3c72}
-        .slider-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:2}
-        .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .3s}
-        .dot.active{background:#ff6600}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px);-webkit-text-size-adjust:100%}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;font-size:1rem;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit}
+    ul{list-style:none}
+    :focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:6px}
+    .icon{width:24px;height:24px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .icon-sm{width:18px;height:18px}
+    .icon-lg{width:28px;height:28px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .container{width:min(1200px,100% - 40px);margin-inline:auto}
+    .skip-link{position:absolute;left:16px;top:-100px;z-index:2000;background:var(--primary);color:var(--on-primary);padding:12px 16px;border-radius:var(--radius-sm);font-weight:600;text-decoration:none}
+    .skip-link:focus{top:16px}
 
-        /* care */
-        .features-care{padding:80px 0;background:#f8f9fa}
-        .section-title{text-align:center;font-size:2.5rem;margin-bottom:3rem;color:#1e3c72}
-        .section-title span{color:#ff6600}
-        .care-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px}
-        .care-card{background:#fff;padding:40px 30px;border-radius:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
-        .care-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.15)}
-        .care-icon{width:100px;height:100px;background:linear-gradient(135deg,#ff6600,#ff8533);border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;font-weight:bold}
-        .care-card h3{font-size:1.8rem;margin-bottom:15px;color:#1e3c72}
+    /* ---------- Buttons ---------- */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:600;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease);white-space:nowrap}
+    .btn:active{transform:scale(.97)}
+    .btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:0 8px 24px rgba(255,107,26,.3)}
+    .btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px)}
+    .btn-outline{border-color:var(--border-strong);color:var(--text);background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
+    .btn-outline:hover{border-color:var(--text);background:rgba(255,255,255,.1)}
+    .btn-whatsapp{background:var(--whatsapp);color:#062b14}
+    .btn-whatsapp:hover{filter:brightness(1.08);transform:translateY(-2px)}
 
-        /* truck brands --- NEW CENTER SLIDER --- */
-        .truck-brands{padding:80px 0;background:#fff}
-        .truck-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:40px}
-        .truck-card{background:#f8f9fa;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;text-align:center}
-        .truck-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
-        .img-slider{position:relative;width:100%;height:200px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
-        .img-slider img{position:absolute;max-width:90%;max-height:90%;object-fit:contain;opacity:0;transition:opacity 1.2s ease-in-out}
-        .img-slider img.active{opacity:1}
-        .truck-name{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:20px;font-size:1.5rem;font-weight:bold;text-transform:uppercase;letter-spacing:2px}
+    /* ---------- Header ---------- */
+    .site-header{position:fixed;inset:0 0 auto 0;z-index:1000;height:var(--header-h);display:flex;align-items:center;transition:background-color .25s var(--ease),border-color .25s var(--ease),backdrop-filter .25s;border-bottom:1px solid transparent}
+    .site-header.scrolled{background:rgba(10,15,26,.85);backdrop-filter:blur(14px) saturate(1.4);border-bottom-color:var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#FF9A3D);display:grid;place-items:center;color:var(--on-primary);box-shadow:0 6px 18px rgba(255,107,26,.35)}
+    .brand-text{display:flex;flex-direction:column;line-height:1.1}
+    .brand-text strong{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.5px;text-transform:uppercase}
+    .brand-text span{font-size:.75rem;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem;color:var(--text-muted);transition:color .2s,background-color .2s}
+    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    .nav-links a.active{color:var(--text);background:rgba(255,107,26,.14)}
+    .nav-cta{display:flex;align-items:center;gap:8px}
+    .menu-btn{display:none;width:48px;height:48px;border-radius:12px;border:1px solid var(--border-strong);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer;place-items:center}
+    .menu-btn:hover{background:rgba(255,255,255,.1)}
 
-        /* services */
-        .diagnostic-services{padding:80px 0;background:#f8f9fa}
-        .service-category{background:#fff;margin-bottom:30px;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1)}
-        .service-header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:25px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-        .service-header h3{font-size:1.5rem;display:flex;align-items:center;gap:15px}
-        .service-number{background:#ff6600;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem}
-        .service-content{padding:30px}
-        .service-content ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px}
-        .service-content li{padding:15px;background:#f8f9fa;border-left:4px solid #ff6600;border-radius:5px;font-size:1.1rem}
-        .service-content li strong{color:#1e3c72;display:block;margin-bottom:5px}
+    /* Mobile menu (popover) */
+    .mobile-menu{inset:auto;top:calc(var(--header-h) + 8px);right:16px;left:16px;margin:0;width:auto;border:1px solid var(--border-strong);border-radius:var(--radius);background:rgba(17,24,39,.97);backdrop-filter:blur(16px);color:var(--text);padding:12px;box-shadow:var(--shadow-lg);opacity:0;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),overlay .2s allow-discrete,display .2s allow-discrete}
+    .mobile-menu:popover-open{opacity:1;transform:none}
+    @starting-style{.mobile-menu:popover-open{opacity:0;transform:translateY(-8px)}}
+    .mobile-menu::backdrop{background:rgba(0,0,0,.5)}
+    .mobile-menu a{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-radius:12px;text-decoration:none;font-weight:600;font-size:1.05rem}
+    .mobile-menu a:hover{background:rgba(255,255,255,.06)}
+    .mobile-menu .btn{width:100%;margin-top:8px}
 
-        /* why choose */
-        .why-choose{padding:80px 0;background:#fff}
-        .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
-        .why-card{background:#f8f9fa;padding:35px;border-radius:10px;border-top:5px solid #1e3c72;box-shadow:0 3px 10px rgba(0,0,0,.1)}
-        .why-card h3{color:#1e3c72;margin-bottom:15px;font-size:1.4rem}
+    /* ---------- Hero ---------- */
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--header-h) + 48px) 0 140px;isolation:isolate;overflow:hidden}
+    .hero-slides{position:absolute;inset:0;z-index:-2}
+    .hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.4s var(--ease),transform 7s linear}
+    .hero-slides img.active{opacity:1;transform:scale(1)}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,15,26,.96) 0%,rgba(10,15,26,.82) 45%,rgba(10,15,26,.35) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 35%)}
+    .hero-content{max-width:720px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;background:rgba(255,107,26,.12);border:1px solid rgba(255,107,26,.35);color:#FFB27F;font-size:.85rem;font-weight:600;letter-spacing:.3px;margin-bottom:24px}
+    .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.75rem,7vw,5.25rem);line-height:.98;font-weight:800;text-transform:uppercase;letter-spacing:-.5px;margin-bottom:20px;text-wrap:balance}
+    .hero h1 .hl{color:var(--primary)}
+    .hero-lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--text-muted);max-width:600px;margin-bottom:32px;text-wrap:pretty}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .hero-tags li{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:.85rem;color:var(--text)}
+    .hero-tags .icon{width:16px;height:16px;color:var(--success)}
+    .hero-dots{position:absolute;bottom:108px;right:max(20px,calc((100vw - 1200px)/2));display:flex;gap:4px;z-index:2}
+    .hero-dots button{width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center}
+    .hero-dots button::before{content:"";width:28px;height:4px;border-radius:4px;background:rgba(255,255,255,.3);transition:background-color .25s,width .25s}
+    .hero-dots button[aria-current="true"]::before{background:var(--primary);width:40px}
 
-        /* tools */
-        .tools{padding:80px 0;background:#f8f9fa}
-        .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
-        .tool-item{background:#fff;padding:30px;border-radius:10px;text-align:center;border:2px solid #e0e0e0;transition:all .3s}
-        .tool-item:hover{border-color:#ff6600;transform:translateY(-5px)}
-        .tool-icon{font-size:3rem;margin-bottom:15px}
+    /* Stats strip */
+    .stats{position:relative;z-index:3;margin-top:-80px}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+    .stat{padding:28px 24px;display:flex;align-items:center;gap:16px}
+    .stat+.stat{border-left:1px solid var(--border)}
+    .stat-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(255,107,26,.12);color:var(--primary)}
+    .stat strong{display:block;font-family:var(--font-display);font-size:2rem;line-height:1;font-weight:700}
+    .stat span{font-size:.875rem;color:var(--text-muted)}
 
-        /* contact */
-        .contact{padding:80px 0;background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff}
-        .contact-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px}
-        .contact-info h3{font-size:1.8rem;margin-bottom:20px}
-        .contact-info p{margin-bottom:15px;display:flex;align-items:flex-start;gap:10px;font-size:1.1rem}
-        .contact-info strong{min-width:120px;display:inline-block;color:#ff6600}
-        .highlight-box{background:rgba(255,102,0,.2);border:2px solid #ff6600;padding:20px;border-radius:10px;margin-top:20px}
-        .map{background:rgba(255,255,255,.1);padding:20px;border-radius:10px;height:400px;display:flex;align-items:center;justify-content:center}
-        .map iframe{width:100%;height:100%;border:0;border-radius:10px}
+    /* ---------- Sections ---------- */
+    section{position:relative}
+    .section{padding:112px 0}
+    .section-alt{background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+    .section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+    .kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
+    .section-title{font-family:var(--font-display);font-size:clamp(2.25rem,4.5vw,3.25rem);line-height:1.05;font-weight:700;text-transform:uppercase;text-wrap:balance}
+    .section-title span{color:var(--primary)}
+    .section-sub{margin-top:16px;color:var(--text-muted);font-size:1.075rem;text-wrap:pretty}
 
-        /* footer */
-        footer{background:#0a192f;color:#fff;text-align:center;padding:30px 0}
-        .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:20px;text-align:left}
-        .footer-section h4{color:#ff6600;margin-bottom:15px}
-        .footer-section ul{list-style:none}
-        .footer-section li{margin-bottom:8px}
+    /* Cards (generic) */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:transform .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
+    .card:hover{transform:translateY(-4px);border-color:rgba(255,107,26,.4);box-shadow:var(--shadow-lg)}
+    .card h3{font-size:1.25rem;font-weight:700;margin-bottom:8px}
+    .card p{color:var(--text-muted);font-size:.975rem}
+    .icon-tile{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;background:linear-gradient(135deg,rgba(255,107,26,.2),rgba(255,107,26,.05));border:1px solid rgba(255,107,26,.3);color:var(--primary)}
 
-        /* responsive */
-        @media(max-width:768px){.hero-content h1{font-size:2.2rem}.hero-content h2{font-size:1.6rem}.hero-content p{font-size:1.1rem}.hero-content .phone{font-size:1.4rem}nav ul{display:none}.logo{font-size:1.5rem}.service-content ul{grid-template-columns:1fr}.truck-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}}
-    </style>
+    /* CARE */
+    .care-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .care-card{position:relative;overflow:hidden}
+    .care-letter{position:absolute;right:16px;top:4px;font-family:var(--font-display);font-size:6rem;font-weight:800;line-height:1;color:rgba(255,255,255,.04);pointer-events:none;transition:color .25s}
+    .care-card:hover .care-letter{color:rgba(255,107,26,.1)}
+
+    /* Trucks */
+    .truck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .truck-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+    .truck-card:hover{transform:translateY(-4px);border-color:rgba(255,107,26,.4);box-shadow:var(--shadow-lg)}
+    .img-slider{position:relative;aspect-ratio:4/3;background:radial-gradient(ellipse at 50% 60%,#ffffff 0%,#EEF1F5 100%);overflow:hidden}
+    .img-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:16px;opacity:0;transform:scale(.98);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+    .img-slider img.active{opacity:1;transform:scale(1)}
+    .img-placeholder{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:12px;color:#334155;font-weight:600;font-size:.9rem;text-align:center}
+    .img-placeholder .icon{width:72px;height:72px;stroke-width:1.5;color:var(--primary)}
+    .img-count{position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:999px;background:rgba(10,15,26,.75);color:#fff;font-size:.75rem;font-weight:600;font-variant-numeric:tabular-nums}
+    .truck-info{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px}
+    .truck-name{font-family:var(--font-display);font-size:1.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;line-height:1.1}
+    .truck-info small{display:block;color:var(--text-muted);font-size:.8rem;margin-top:2px}
+    .truck-badge{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--surface-2);color:var(--primary);border:1px solid var(--border)}
+
+    /* Process */
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+    .step{position:relative;padding:36px 32px}
+    .step-num{font-family:var(--font-display);font-size:3.5rem;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,107,26,.6);margin-bottom:12px}
+
+    /* Services accordion */
+    .services-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
+    .service{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+    .service[open]{border-color:rgba(255,107,26,.45);box-shadow:var(--shadow)}
+    .service summary{list-style:none;display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;min-height:72px;transition:background-color .2s}
+    .service summary::-webkit-details-marker{display:none}
+    .service summary:hover{background:rgba(255,255,255,.03)}
+    .service-num{width:44px;height:44px;flex-shrink:0;border-radius:12px;display:grid;place-items:center;background:var(--surface-2);color:var(--primary);font-family:var(--font-display);font-weight:700;font-size:1.25rem;border:1px solid var(--border);transition:background-color .2s,color .2s}
+    .service[open] .service-num{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+    .service summary h3{flex:1;font-size:1.1rem;font-weight:700}
+    .service .chev{color:var(--text-muted);transition:transform .25s var(--ease)}
+    .service[open] .chev{transform:rotate(180deg);color:var(--primary)}
+    .service-body{padding:0 24px 24px}
+    .service-body ul{display:grid;gap:10px}
+    .service-body li{display:flex;gap:12px;padding:14px 16px;background:var(--surface-2);border-radius:12px;border-left:3px solid var(--primary)}
+    .service-body li .icon{color:var(--primary);margin-top:2px}
+    .service-body li strong{display:block;font-weight:600;margin-bottom:2px}
+    .service-body li span{color:var(--text-muted);font-size:.95rem}
+
+    /* Why / Tools */
+    .why-grid,.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .tool{display:flex;gap:18px;align-items:flex-start}
+    .tool .icon-tile{margin-bottom:0;flex-shrink:0}
+
+    /* CTA band */
+    .cta-band{position:relative;overflow:hidden;border-radius:var(--radius-lg);padding:56px;background:linear-gradient(120deg,#FF6B1A 0%,#FF8F3F 55%,#FFB26B 100%);color:var(--on-primary);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .cta-band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(0,0,0,.05) 0 14px,transparent 14px 28px);pointer-events:none}
+    .cta-band>*{position:relative}
+    .cta-band h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.05;text-transform:uppercase;font-weight:800}
+    .cta-band p{font-weight:500;margin-top:8px;opacity:.85}
+    .cta-band .btn-dark{background:var(--bg);color:#fff}
+    .cta-band .btn-dark:hover{background:#000;transform:translateY(-2px)}
+    .cta-band .btn-ghost{border-color:rgba(10,15,26,.4);color:var(--on-primary)}
+    .cta-band .btn-ghost:hover{background:rgba(10,15,26,.1)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:stretch}
+    .contact-list{display:grid;gap:12px;margin-bottom:24px}
+    .contact-item{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;text-decoration:none;transition:border-color .2s,background-color .2s}
+    a.contact-item:hover{border-color:rgba(255,107,26,.5);background:var(--surface-3)}
+    .contact-item .icon-tile{width:44px;height:44px;margin:0;border-radius:12px}
+    .contact-item small{display:block;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+    .contact-item b{font-weight:600;word-break:break-word}
+    .brands-box{padding:20px;border-radius:14px;background:rgba(255,107,26,.08);border:1px solid rgba(255,107,26,.3)}
+    .brands-box h3{font-size:1rem;color:#FFB27F;margin-bottom:12px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+    .chips li{padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:.8rem}
+    .map-card{display:flex;flex-direction:column;padding:0;overflow:hidden}
+    .map-card:hover{transform:none}
+    .map-frame{flex:1;min-height:420px;background:var(--surface-2)}
+    .map-frame iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:grayscale(.2) contrast(1.05)}
+    .map-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;border-top:1px solid var(--border);flex-wrap:wrap}
+    .map-foot b{display:block}
+    .map-foot span{color:var(--text-muted);font-size:.9rem}
+
+    /* Footer */
+    .site-footer{background:#060A12;border-top:1px solid var(--border);padding:72px 0 calc(32px + env(safe-area-inset-bottom))}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    .footer-grid h4{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:16px}
+    .footer-grid li{margin-bottom:10px;color:var(--text-muted);font-size:.95rem}
+    .footer-grid a{text-decoration:none;transition:color .2s}
+    .footer-grid a:hover{color:var(--text)}
+    .footer-about p{color:var(--text-muted);margin-top:16px;max-width:320px;font-size:.95rem}
+    .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.875rem}
+
+    /* Floating actions (mobile) */
+    .fab-bar{display:none}
+
+    /* Scroll reveal (progressive enhancement) */
+    @media (prefers-reduced-motion:no-preference){
+      @supports ((animation-timeline:view()) and (animation-range:entry)){
+        @keyframes reveal{from{opacity:0;transform:translateY(32px)}}
+        .reveal{animation:reveal auto var(--ease) backwards;animation-timeline:view();animation-range:entry 0% entry 60%}
+      }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1024px){
+      .care-grid{grid-template-columns:repeat(2,1fr)}
+      .truck-grid,.why-grid,.tools-grid{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat:nth-child(3){border-left:0}
+      .stat:nth-child(n+3){border-top:1px solid var(--border)}
+      .services-wrap{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .menu-btn{display:grid}
+    }
+    @media (max-width:640px){
+      :root{--header-h:64px}
+      .section{padding:80px 0}
+      .brand-text span{display:none}
+      .nav-cta .btn{display:none}
+      .hero{padding-bottom:120px}
+      .hero-actions .btn{flex:1 1 100%}
+      .hero-dots{bottom:96px;right:50%;transform:translateX(50%)}
+      .care-grid,.truck-grid,.why-grid,.tools-grid,.process-grid{grid-template-columns:1fr}
+      .stat{padding:20px 16px;gap:12px}
+      .stat-icon{width:44px;height:44px}
+      .stat strong{font-size:1.6rem}
+      .card{padding:24px}
+      .cta-band{padding:36px 24px}
+      .cta-band .btn{flex:1 1 100%}
+      .footer-grid{grid-template-columns:1fr}
+      .site-footer{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+      .fab-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:900;padding:8px;border-radius:999px;background:rgba(17,24,39,.92);backdrop-filter:blur(12px);border:1px solid var(--border-strong);box-shadow:var(--shadow-lg)}
+      .fab-bar .btn{min-height:48px;padding:10px 16px}
+    }
+    @media (max-width:960px){.process-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 
+<!-- SVG icon sprite (Lucide, 2px stroke) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2M7 10l-1 2h4l-1 2"/></symbol>
+    <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+    <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3 11 22 2l-9 19-2-8-8-2z"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8"/></symbol>
+  </defs>
+</svg>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- Header -->
-<header>
-  <nav class="container">
-    <div class="logo">Khan Automobile <span>Advanced Diagnostic Center</span></div>
-    <ul>
+<header class="site-header" id="siteHeader">
+  <nav class="container nav" aria-label="Primary">
+    <a href="#home" class="brand" aria-label="Khan Automobile – Home">
+      <span class="brand-mark"><svg class="icon"><use href="#i-wrench"/></svg></span>
+      <span class="brand-text"><strong>Khan Automobile</strong><span>Advanced Diagnostic Center</span></span>
+    </a>
+    <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#care">CARE</a></li>
       <li><a href="#trucks">Trucks</a></li>
       <li><a href="#diagnostics">Diagnostics</a></li>
+      <li><a href="#tools">Equipment</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-cta">
+      <a href="tel:+918108820983" class="btn btn-primary"><svg class="icon icon-sm"><use href="#i-phone"/></svg>8108820983</a>
+      <button class="menu-btn" popovertarget="mobileMenu" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" id="menuBtn">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
 
+<div id="mobileMenu" class="mobile-menu" popover>
+  <nav aria-label="Mobile">
+    <a href="#home">Home <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="#care">CARE <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="#trucks">Trucks <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="#diagnostics">Diagnostics <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="#tools">Equipment <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="#contact">Contact <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a href="tel:+918108820983" class="btn btn-primary"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg>Call 8108820983</a>
+  </nav>
+</div>
+
+<main id="main">
+
 <!-- Hero -->
-<section id="home" class="hero">
-  <div class="slider">
-    <div class="slide active"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div>
+<section id="home" class="hero" aria-label="Introduction">
+  <div class="hero-slides" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920&q=75&auto=format" alt="" class="active" fetchpriority="high" width="1920" height="1080">
+    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=75&auto=format" alt="" fetchpriority="low" loading="lazy" width="1920" height="1080">
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=75&auto=format" alt="" fetchpriority="low" loading="lazy" width="1920" height="1080">
   </div>
-  <div class="hero-content">
-    <h1>Khan Automobile Diagnostic Center</h1>
-    <h2>🔧 Advanced ECU & OBD Specialist 🔧</h2>
-    <p>Basti ka No.1 Car Diagnostic Center - Engine Diagnosis, ECU Programming, OBD Scanning, Electrical Fault Finding & All Advanced Computer Diagnostics</p>
-    <p class="phone">📞 Call Now: 8108820983</p>
-    <a href="tel:8108820983" class="cta-button">Call for Emergency</a>
-    <a href="#diagnostics" class="cta-button secondary">View Services</a>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow"><span class="pulse" aria-hidden="true"></span>24/7 Breakdown Assistance · Basti, UP</span>
+      <h1>Advanced <span class="hl">ECU &amp; OBD</span> Diagnostic Specialist</h1>
+      <p class="hero-lead">Basti ka No.1 Car &amp; Truck Diagnostic Center — Engine Diagnosis, ECU Programming, OBD Scanning, Electrical Fault Finding &amp; all advanced computer diagnostics.</p>
+      <div class="hero-actions">
+        <a href="tel:+918108820983" class="btn btn-primary"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg>Call for Emergency</a>
+        <a href="https://wa.me/918108820983?text=Hello%20Khan%20Automobile%2C%20mujhe%20vehicle%20diagnosis%20chahiye." class="btn btn-whatsapp" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+        <a href="#diagnostics" class="btn btn-outline">View Services<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="hero-tags">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>All Car Brands</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Heavy Trucks &amp; JCB</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>EV / Hybrid</li>
+      </ul>
+    </div>
   </div>
-  <div class="slider-dots">
-    <span class="dot active" onclick="currentSlide(0)"></span>
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
+  <div class="hero-dots" role="group" aria-label="Choose slide">
+    <button type="button" aria-label="Slide 1" aria-current="true"></button>
+    <button type="button" aria-label="Slide 2"></button>
+    <button type="button" aria-label="Slide 3"></button>
   </div>
 </section>
 
-<!-- CARE -->
-<section id="care" class="features-care">
+<!-- Stats -->
+<div class="stats">
   <div class="container">
-    <h2 class="section-title">We <span>CARE</span> for You</h2>
+    <ul class="stats-grid">
+      <li class="stat"><span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#i-cpu"/></svg></span><div><strong>10+</strong><span>Diagnostic categories</span></div></li>
+      <li class="stat"><span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span><div><strong>9</strong><span>Truck brands covered</span></div></li>
+      <li class="stat"><span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><div><strong>1–2 hr</strong><span>Typical diagnosis time</span></div></li>
+      <li class="stat"><span class="stat-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><div><strong>24/7</strong><span>Emergency support</span></div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- CARE -->
+<section id="care" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Our Promise</span>
+      <h2 class="section-title">We <span>CARE</span> for You</h2>
+      <p class="section-sub">Har vehicle ke liye ek hi standard — convenient, affordable, reliable aur efficient service.</p>
+    </div>
     <div class="care-grid">
-      <div class="care-card">
-        <div class="care-icon">C</div><h3>Convenient</h3><p>Free pick-up and drop services for your ease & convenience</p>
-      </div>
-      <div class="care-card">
-        <div class="care-icon">A</div><h3>Affordable</h3><p>Competitive pricing with cost-effective diagnostic solutions</p>
-      </div>
-      <div class="care-card">
-        <div class="care-icon">R</div><h3>Reliable</h3><p>Accurate diagnosis with advanced scanner tools & equipment</p>
-      </div>
-      <div class="care-card">
-        <div class="care-icon">E</div><h3>Efficient</h3><p>Swift diagnostic services to get you back on the road quickly</p>
-      </div>
+      <article class="card care-card reveal"><span class="care-letter" aria-hidden="true">C</span><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-car"/></svg></div><h3>Convenient</h3><p>Free pick-up and drop services for your ease &amp; convenience.</p></article>
+      <article class="card care-card reveal"><span class="care-letter" aria-hidden="true">A</span><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-wallet"/></svg></div><h3>Affordable</h3><p>Competitive pricing with cost-effective diagnostic solutions.</p></article>
+      <article class="card care-card reveal"><span class="care-letter" aria-hidden="true">R</span><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Reliable</h3><p>Accurate diagnosis with advanced scanner tools &amp; equipment.</p></article>
+      <article class="card care-card reveal"><span class="care-letter" aria-hidden="true">E</span><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-gauge"/></svg></div><h3>Efficient</h3><p>Swift diagnostic services to get you back on the road quickly.</p></article>
     </div>
   </div>
 </section>
 
-<!-- TRUCK BRANDS - NEW CENTER SLIDER -->
-<section id="trucks" class="truck-brands">
+<!-- Truck brands -->
+<section id="trucks" class="section section-alt">
   <div class="container">
-    <h2 class="section-title">Heavy Vehicle <span>Diagnostic Services</span></h2>
-    <p style="text-align:center;margin-bottom:40px;font-size:1.2rem;color:#666;">We provide expert diagnostic services for all major truck and commercial vehicle brands</p>
+    <div class="section-head reveal">
+      <span class="kicker">Commercial &amp; Heavy Vehicles</span>
+      <h2 class="section-title">Heavy Vehicle <span>Diagnostic Services</span></h2>
+      <p class="section-sub">We provide expert diagnostic services for all major truck, bus and construction equipment brands.</p>
+    </div>
 
     <div class="truck-grid">
-      <!-- TATA -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="1.jpg" alt="TATA">
-          <img src="2.jpg" alt="TATA">
-          <img src="3.jpg" alt="TATA">
-          <img src="4.jpg" alt="TATA">
-          <img src="5.jpg" alt="TATA">
+          <img src="1.jpg" alt="TATA Signa truck" width="750" height="650" loading="lazy">
+          <img src="2.jpg" alt="TATA bus" loading="lazy">
+          <img src="3.jpg" alt="TATA commercial vehicle" loading="lazy">
+          <img src="4.jpg" alt="TATA truck" loading="lazy">
+          <img src="5.jpg" alt="TATA vehicle" loading="lazy">
         </div>
-        <div class="truck-name">TATA</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">TATA</h3><small>Signa · Prima · Ultra · Buses</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
 
-      <!-- ASHOK LEYLAND -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="6.jpg" alt="ASHOK LEYLAND">
-          <img src="7.jpg" alt="ASHOK LEYLAND">
-          <img src="8.jpg" alt="ASHOK LEYLAND">
-          <img src="9.jpg" alt="ASHOK LEYLAND">
-          <img src="10.jpg" alt="ASHOK LEYLAND">
+          <img src="6.jpg" alt="Ashok Leyland truck range" loading="lazy">
+          <img src="7.jpg" alt="Ashok Leyland truck" loading="lazy">
+          <img src="8.jpg" alt="Ashok Leyland vehicle" loading="lazy">
+          <img src="9.jpg" alt="Ashok Leyland truck" loading="lazy">
+          <img src="10.jpg" alt="Ashok Leyland vehicle" loading="lazy">
         </div>
-        <div class="truck-name">ASHOK LEYLAND</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">Ashok Leyland</h3><small>AVTR · Ecomet · Dost · Buses</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
 
-      <!-- MAHINDRA -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="11.jpg" alt="Mahindra">
-          <img src="12.jpg" alt="Mahindra">
-          <img src="13.jpg" alt="Mahindra">
-          <img src="14.jpg" alt="Mahindra">
-          <img src="15.jpg" alt="Mahindra">
+          <img src="11.jpg" alt="Mahindra Bolero pickup" loading="lazy">
+          <img src="12.jpg" alt="Mahindra commercial vehicle" loading="lazy">
+          <img src="13.jpg" alt="Mahindra Furio truck" loading="lazy">
+          <img src="14.jpg" alt="Mahindra truck" loading="lazy">
+          <img src="15.jpg" alt="Mahindra Blazo heavy truck" loading="lazy">
         </div>
-        <div class="truck-name">MAHINDRA</div>
-      </div>
-      <!-- JCB -->
-      <div class="truck-card">
-        <div class="img-slider">
-          <img src="16.jpg" alt="JCB">
-          <img src="17.jpg" alt="JCB">
-          <img src="18.jpg" alt="JCB">
-          <img src="19.jpg" alt="JCB">
-          <img src="20.jpg" alt="JCB">
-        </div>
-        <div class="truck-name">JCB</div>
-      </div>
-      <!-- EICHER -->
-      <div class="truck-card">
-        <div class="img-slider">
-          <img src="21.jpg" alt="EICHER">
-          <img src="22.jpg" alt="EICHER">
-          <img src="23.jpg" alt="EICHER">
-          <img src="24.jpg" alt="EICHER">
-          <img src="25.jpg" alt="EICHER">
-        </div>
-        <div class="truck-name">EICHER</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">Mahindra</h3><small>Blazo · Furio · Bolero Pik-Up</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
 
-      <!-- BHARATBENZ -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="26.jpg" alt="BHARATBENZ">
-          <img src="27.jpg" alt="BHARATBENZ">
-          <img src="28.jpg" alt="BHARATBENZ">
-          <img src="29.jpg" alt="BHARATBENZ">
-          <img src="30.jpg" alt="BHARATBENZ">
+          <img src="16.jpg" alt="JCB backhoe loader" loading="lazy">
+          <img src="17.jpg" alt="JCB excavator" loading="lazy">
+          <img src="18.jpg" alt="JCB loader" loading="lazy">
         </div>
-        <div class="truck-name">BHARATBENZ</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">JCB</h3><small>Backhoe · Excavator · Loader</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span></div>
+      </article>
 
-      <!-- HYUNDAI -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="31.jpg" alt="HYUNDAI">
-          <img src="32.jpg" alt="HYUNDAI">
-          <img src="33.jpg" alt="HYUNDAI">
-          <img src="34.jpg" alt="HYUNDAI">
-          <img src="35.jpg" alt="HYUNDAI">
+          <div class="img-placeholder"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span>Eicher Pro · Tippers · Buses</span></div>
         </div>
-        <div class="truck-name">HYUNDAI</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">Eicher</h3><small>Pro Series · Tippers · Skyline</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
 
-      <!-- MERCEDES-BENZ -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="36.jpg" alt="MERCEDES-BENZ">
-          <img src="37.jpg" alt="MERCEDES-BENZ">
-          <img src="38.jpg" alt="MERCEDES-BENZ">
-          <img src="39.jpg" alt="MERCEDES-BENZ">
-          <img src="40.jpg" alt="MERCEDES-BENZ">
+          <img src="26.jpg" alt="BharatBenz heavy truck" loading="lazy">
+          <img src="27.jpg" alt="BharatBenz tipper" loading="lazy">
+          <img src="28.jpg" alt="BharatBenz tractor trailer" loading="lazy">
         </div>
-        <div class="truck-name">MERCEDES-BENZ</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">BharatBenz</h3><small>Haulage · Tipper · Tractor</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
 
-      <!-- MAN -->
-      <div class="truck-card">
+      <article class="truck-card reveal">
         <div class="img-slider">
-          <img src="41.jpg" alt="MAN">
-          <img src="42.jpg" alt="MAN">
-          <img src="43.jpg" alt="MAN">
-          <img src="44.jpg" alt="MAN">
-          <img src="45.jpg" alt="MAN">
+          <img src="31.jpg" alt="Hyundai Xcient heavy truck" loading="lazy">
         </div>
-        <div class="truck-name">MAN</div>
-      </div>
+        <div class="truck-info"><div><h3 class="truck-name">Hyundai</h3><small>Xcient · Mighty · County</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
+
+      <article class="truck-card reveal">
+        <div class="img-slider">
+          <img src="36.jpg" alt="Mercedes-Benz Actros truck" loading="lazy">
+          <img src="37.jpg" alt="Mercedes-Benz Arocs tipper" loading="lazy">
+          <img src="38.jpg" alt="Mercedes-Benz Atego truck" loading="lazy">
+        </div>
+        <div class="truck-info"><div><h3 class="truck-name">Mercedes-Benz</h3><small>Actros · Arocs · Atego</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
+
+      <article class="truck-card reveal">
+        <div class="img-slider">
+          <img src="41.jpg" alt="MAN TGS truck" loading="lazy">
+          <img src="42.jpg" alt="MAN tipper" loading="lazy">
+        </div>
+        <div class="truck-info"><div><h3 class="truck-name">MAN</h3><small>TGS · TGX · CLA</small></div><span class="truck-badge"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">How It Works</span>
+      <h2 class="section-title">3 Steps to the <span>Right Diagnosis</span></h2>
+    </div>
+    <div class="process-grid">
+      <article class="card step reveal"><div class="step-num">01</div><h3>Call or Visit</h3><p>8108820983 par call karein ya WhatsApp karein — free pick-up &amp; drop available hai.</p></article>
+      <article class="card step reveal"><div class="step-num">02</div><h3>Scan &amp; Diagnose</h3><p>Advanced OBD/ECU scanners se fault codes, live data aur freeze-frame data ka analysis.</p></article>
+      <article class="card step reveal"><div class="step-num">03</div><h3>Fix &amp; Verify</h3><p>Sahi repair, codes clear aur road-test — aapko har cheez simple language mein samjhate hain.</p></article>
     </div>
   </div>
 </section>
 
 <!-- Diagnostic Services -->
-<section id="diagnostics" class="diagnostic-services">
+<section id="diagnostics" class="section section-alt">
   <div class="container">
-    <h2 class="section-title">Advanced <span>Diagnostic Services</span></h2>
-    <p style="text-align:center;margin-bottom:40px;font-size:1.2rem;color:#666;">हमारे पास सभी तरह के modern diagnostic tools और experienced technicians हैं जो आपकी car की हर problem का सही diagnosis करते हैं।</p>
-
-    <!-- 1 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">1</span> Engine Diagnosis</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>🔍 Engine Check-Light Analysis</strong>Engine check-light का सही कारण ढूँढना और fault codes read करना</li>
-          <li><strong>⚠️ Misfire & Knocking Detection</strong>Misfire, knocking, power loss जैसी problems का diagnosis</li>
-          <li><strong>⛽ Fuel Injection System</strong>Fuel injection system की complete जाँच और cleaning</li>
-          <li><strong>📡 Sensor Testing</strong>O2 sensor, MAP sensor, MAF sensor आदि की testing और calibration</li>
-        </ul>
-      </div>
+    <div class="section-head reveal">
+      <span class="kicker">What We Do</span>
+      <h2 class="section-title">Advanced <span>Diagnostic Services</span></h2>
+      <p class="section-sub">हमारे पास सभी तरह के modern diagnostic tools और experienced technicians हैं जो आपकी car की हर problem का सही diagnosis करते हैं।</p>
     </div>
 
-    <!-- 2 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">2</span> ECU / ECM / PCM Diagnosis</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>💻 ECU Scanning</strong>Advanced scanner tool से ECU scan करना</li>
-          <li><strong>📝 Error Codes</strong>Fault codes पढ़ना, interpret करना और clear करना</li>
-          <li><strong>🔌 ECU Wiring Check</strong>ECU wiring, grounding, short circuit की जाँच</li>
-          <li><strong>🔄 ECU Programming</strong>ECU programming और reset (basic level)</li>
-        </ul>
-      </div>
-    </div>
+    <div class="services-wrap">
+      <details class="service" open>
+        <summary><span class="service-num">1</span><h3>Engine Diagnosis</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Engine Check-Light Analysis</strong><span>Engine check-light का सही कारण ढूँढना और fault codes read करना</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Misfire &amp; Knocking Detection</strong><span>Misfire, knocking, power loss जैसी problems का diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Fuel Injection System</strong><span>Fuel injection system की complete जाँच और cleaning</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Sensor Testing</strong><span>O2 sensor, MAP sensor, MAF sensor आदि की testing और calibration</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 3 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">3</span> Electrical & Electronics</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>🔋 Battery & Alternator</strong>Battery, alternator, starter motor की testing</li>
-          <li><strong>🔍 Wiring Harness</strong>Wiring harness में fault finding और repair</li>
-          <li><strong>⚡ Relay & Fuse</strong>Relay, fuse, switch diagnosis और replacement</li>
-          <li><strong>🌐 CAN Bus System</strong>CAN bus system basic checking और diagnosis</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">2</span><h3>ECU / ECM / PCM Diagnosis</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>ECU Scanning</strong><span>Advanced scanner tool से ECU scan करना</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Error Codes</strong><span>Fault codes पढ़ना, interpret करना और clear करना</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>ECU Wiring Check</strong><span>ECU wiring, grounding, short circuit की जाँच</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>ECU Programming</strong><span>ECU programming और reset (basic level)</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 4 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">4</span> OBD (On-Board Diagnostics)</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>🔌 OBD-II Scanner</strong>Professional OBD-II scanner use करना</li>
-          <li><strong>📊 Live Data Reading</strong>Real-time live data reading और analysis</li>
-          <li><strong>📸 Freeze Frame Data</strong>Freeze frame data समझना और diagnose करना</li>
-          <li><strong>🌿 Emission Diagnosis</strong>Emission related faults का diagnosis और repair</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">3</span><h3>Electrical &amp; Electronics</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Battery &amp; Alternator</strong><span>Battery, alternator, starter motor की testing</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Wiring Harness</strong><span>Wiring harness में fault finding और repair</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Relay &amp; Fuse</strong><span>Relay, fuse, switch diagnosis और replacement</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>CAN Bus System</strong><span>CAN bus system basic checking और diagnosis</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 5 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">5</span> Sensor & Actuator Testing</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>📡 Critical Sensors</strong>TPS, CKP, CMP sensors testing और replacement</li>
-          <li><strong>⚙️ Injectors & Coils</strong>Injectors, ignition coils की testing</li>
-          <li><strong>🎛️ EGR & Throttle</strong>EGR valve, throttle body cleaning और repair</li>
-          <li><strong>📈 Advanced Tools</strong>Multimeter, oscilloscope (basic) use करना</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">4</span><h3>OBD (On-Board Diagnostics)</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>OBD-II Scanner</strong><span>Professional OBD-II scanner use करना</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Live Data Reading</strong><span>Real-time live data reading और analysis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Freeze Frame Data</strong><span>Freeze frame data समझना और diagnose करना</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Emission Diagnosis</strong><span>Emission related faults का diagnosis और repair</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 6 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">6</span> Transmission Diagnosis (Basic)</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>⚙️ Auto/AMT/CVT</strong>Automatic, AMT, CVT faults diagnosis</li>
-          <li><strong>🔄 Gear Issues</strong>Gear shift problems का diagnosis</li>
-          <li><strong>📋 Error Codes</strong>Transmission related error codes reading</li>
-          <li><strong>🔧 Fluid Check</strong>Transmission fluid level और quality check</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">5</span><h3>Sensor &amp; Actuator Testing</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Critical Sensors</strong><span>TPS, CKP, CMP sensors testing और replacement</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Injectors &amp; Coils</strong><span>Injectors, ignition coils की testing</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>EGR &amp; Throttle</strong><span>EGR valve, throttle body cleaning और repair</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Advanced Tools</strong><span>Multimeter, oscilloscope (basic) use करना</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 7 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">7</span> ABS, Airbag & Safety Systems</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>🛑 ABS Diagnosis</strong>ABS sensor faults और hydraulic issues</li>
-          <li><strong>💥 Airbag System</strong>Airbag warning light diagnosis और reset</li>
-          <li><strong>🚗 Brake Electronics</strong>Brake electronics और sensors diagnosis</li>
-          <li><strong>🛡️ Safety Check</strong>Complete safety systems testing</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">6</span><h3>Transmission Diagnosis (Basic)</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Auto / AMT / CVT</strong><span>Automatic, AMT, CVT faults diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Gear Issues</strong><span>Gear shift problems का diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Error Codes</strong><span>Transmission related error codes reading</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Fluid Check</strong><span>Transmission fluid level और quality check</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 8 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">8</span> AC & Climate Control Diagnosis</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>❄️ AC Cooling</strong>AC cooling issues का electronic diagnosis</li>
-          <li><strong>🌡️ Sensors</strong>Pressure sensor, blower motor faults</li>
-          <li><strong>🎛️ Climate Control</strong>Climate control electronics diagnosis</li>
-          <li><strong>🔧 Gas & Leak</strong>Refrigerant level और leak detection</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">7</span><h3>ABS, Airbag &amp; Safety Systems</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>ABS Diagnosis</strong><span>ABS sensor faults और hydraulic issues</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Airbag System</strong><span>Airbag warning light diagnosis और reset</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Brake Electronics</strong><span>Brake electronics और sensors diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Safety Check</strong><span>Complete safety systems testing</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 9 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">9</span> Hybrid / EV (Basic to Advanced)</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>⚡ High Voltage Safety</strong>High voltage system safety checks</li>
-          <li><strong>🔋 BMS</strong>Battery Management System diagnosis</li>
-          <li><strong>🔄 Inverter & Motor</strong>Inverter और motor fault diagnosis</li>
-          <li><strong>📊 Charging System</strong>EV charging system testing</li>
-        </ul>
-      </div>
-    </div>
+      <details class="service">
+        <summary><span class="service-num">8</span><h3>AC &amp; Climate Control Diagnosis</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>AC Cooling</strong><span>AC cooling issues का electronic diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Sensors</strong><span>Pressure sensor, blower motor faults</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Climate Control</strong><span>Climate control electronics diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Gas &amp; Leak</strong><span>Refrigerant level और leak detection</span></div></li>
+        </ul></div>
+      </details>
 
-    <!-- 10 -->
-    <div class="service-category">
-      <div class="service-header"><h3><span class="service-number">10</span> Software & Updates</h3></div>
-      <div class="service-content">
-        <ul>
-          <li><strong>💾 ECU Reprogramming</strong>ECU reprogramming (OEM level)</li>
-          <li><strong>🔄 Software Updates</strong>Software update issues resolution</li>
-          <li><strong>🔑 Key Coding</strong>Immobilizer / key coding (authorized level)</li>
-          <li><strong>🆕 Latest Updates</strong>Manufacturer software updates</li>
-        </ul>
-      </div>
+      <details class="service">
+        <summary><span class="service-num">9</span><h3>Hybrid / EV (Basic to Advanced)</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>High Voltage Safety</strong><span>High voltage system safety checks</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>BMS</strong><span>Battery Management System diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Inverter &amp; Motor</strong><span>Inverter और motor fault diagnosis</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Charging System</strong><span>EV charging system testing</span></div></li>
+        </ul></div>
+      </details>
+
+      <details class="service">
+        <summary><span class="service-num">10</span><h3>Software &amp; Updates</h3><svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+        <div class="service-body"><ul>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>ECU Reprogramming</strong><span>ECU reprogramming (OEM level)</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Software Updates</strong><span>Software update issues resolution</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Key Coding</strong><span>Immobilizer / key coding (authorized level)</span></div></li>
+          <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Latest Updates</strong><span>Manufacturer software updates</span></div></li>
+        </ul></div>
+      </details>
     </div>
   </div>
 </section>
 
 <!-- Why Choose -->
-<section id="why" class="why-choose">
+<section id="why" class="section">
   <div class="container">
-    <h2 class="section-title">Why Choose <span>Us?</span></h2>
+    <div class="section-head reveal">
+      <span class="kicker">Why Khan Automobile</span>
+      <h2 class="section-title">Why Choose <span>Us?</span></h2>
+    </div>
     <div class="why-grid">
-      <div class="why-card"><h3>🔧 Expert Technicians</h3><p>Certified technicians with specialized training in modern car diagnostics, ECU programming, and electrical systems.</p></div>
-      <div class="why-card"><h3>💻 Latest Technology</h3><p>Investment in latest diagnostic tools, scanners, and software to handle all modern cars including luxury and EVs.</p></div>
-      <div class="why-card"><h3>📊 Accurate Diagnosis</h3><p>We don't guess - we diagnose! Exact problem identification saves your time and money on unnecessary repairs.</p></div>
-      <div class="why-card"><h3>🔍 Transparent Process</h3><p>Complete transparency in diagnosis - we show you the fault codes, live data, and explain everything in simple language.</p></div>
-      <div class="why-card"><h3>⚡ Quick Service</h3><p>Most diagnoses completed within 1-2 hours. Emergency services available for critical issues.</p></div>
-      <div class="why-card"><h3>💰 Fair Pricing</h3><p>Competitive diagnostic charges with no hidden costs. Pay only for what your car actually needs.</p></div>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-award"/></svg></div><h3>Expert Technicians</h3><p>Certified technicians with specialized training in modern car diagnostics, ECU programming, and electrical systems.</p></article>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-laptop"/></svg></div><h3>Latest Technology</h3><p>Investment in latest diagnostic tools, scanners, and software to handle all modern cars including luxury and EVs.</p></article>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-search"/></svg></div><h3>Accurate Diagnosis</h3><p>We don't guess — we diagnose! Exact problem identification saves your time and money on unnecessary repairs.</p></article>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-eye"/></svg></div><h3>Transparent Process</h3><p>We show you the fault codes, live data, and explain everything in simple language.</p></article>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-zap"/></svg></div><h3>Quick Service</h3><p>Most diagnoses completed within 1–2 hours. Emergency services available for critical issues.</p></article>
+      <article class="card reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-handshake"/></svg></div><h3>Fair Pricing</h3><p>Competitive diagnostic charges with no hidden costs. Pay only for what your vehicle actually needs.</p></article>
     </div>
   </div>
 </section>
 
 <!-- Tools -->
-<section id="tools" class="tools">
+<section id="tools" class="section section-alt">
   <div class="container">
-    <h2 class="section-title">Our <span>Equipment</span></h2>
+    <div class="section-head reveal">
+      <span class="kicker">Workshop Setup</span>
+      <h2 class="section-title">Our <span>Equipment</span></h2>
+    </div>
     <div class="tools-grid">
-      <div class="tool-item"><div class="tool-icon">🔌</div><h3>OBD-II Scanner</h3><p>Latest generation diagnostic scanners for all car brands</p></div>
-      <div class="tool-item"><div class="tool-icon">💻</div><h3>ECU Programming Tools</h3><p>Professional ECU programming और flashing equipment</p></div>
-      <div class="tool-item"><div class="tool-icon">📊</div><h3>Multimeter & Oscilloscope</h3><p>Advanced electrical testing और waveform analysis</p></div>
-      <div class="tool-item"><div class="tool-icon">🔋</div><h3>Battery Tester</h3><p>Digital battery और charging system analyzer</p></div>
-      <div class="tool-item"><div class="tool-icon">🌡️</div><h3>AC Pressure Gauges</h3><p>Professional AC diagnosis और refrigerant handling</p></div>
-      <div class="tool-item"><div class="tool-icon">⚡</div><h3>EV/Hybrid Tools</h3><p>High voltage safety equipment for electric vehicles</p></div>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-plug"/></svg></div><div><h3>OBD-II Scanner</h3><p>Latest generation diagnostic scanners for all car brands.</p></div></article>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-cpu"/></svg></div><div><h3>ECU Programming Tools</h3><p>Professional ECU programming और flashing equipment.</p></div></article>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-activity"/></svg></div><div><h3>Multimeter &amp; Oscilloscope</h3><p>Advanced electrical testing और waveform analysis.</p></div></article>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-battery"/></svg></div><div><h3>Battery Tester</h3><p>Digital battery और charging system analyzer.</p></div></article>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-thermo"/></svg></div><div><h3>AC Pressure Gauges</h3><p>Professional AC diagnosis और refrigerant handling.</p></div></article>
+      <article class="card tool reveal"><div class="icon-tile"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-zap"/></svg></div><div><h3>EV / Hybrid Tools</h3><p>High voltage safety equipment for electric vehicles.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="section" style="padding-bottom:0" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Check-engine light on?</h2>
+        <p>Any Vehicle, Any Problem, Right Diagnosis — abhi call karein.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="tel:+918108820983" class="btn btn-dark"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg>8108820983</a>
+        <a href="https://wa.me/918108820983" class="btn btn-ghost" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp Us</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="contact">
+<section id="contact" class="section">
   <div class="container">
-    <h2 class="section-title" style="color:#fff">Contact <span style="color:#ff6600">Us</span></h2>
-    <div class="contact-content">
-      <div class="contact-info">
-        <h3>📞 Get In Touch</h3>
-        <p><strong>Mobile:</strong> 8108820983</p>
-        <p><strong>Email:</strong> mohdirfankhan7861@gmail.com</p>
-        <p><strong>Address:</strong> District Hospital Gate No. 3, Khan Jan Seva Kendra, Basti, Uttar Pradesh</p>
-        <p><strong>Timing:</strong> Mon-Sat: 9 AM - 7 PM | Sun: 10 AM - 4 PM</p>
-        <p><strong>Emergency:</strong> 24/7 Breakdown Assistance Available</p>
-        <div class="highlight-box">
-          <h4 style="color:#ff6600;margin-bottom:10px;">We Diagnose All Brands:</h4>
-          <p>Cars: Maruti, Hyundai, Honda, Toyota, Tata, Mahindra, Kia, Renault, Nissan, Volkswagen, Ford, Chevrolet, Skoda, Mercedes, BMW, Audi, Jaguar, Land Rover, Volvo, Electric Vehicles</p>
-          <p style="margin-top:10px;">Trucks: Tata, Ashok Leyland, Mahindra, Eicher, BharatBenz, Hyundai, Mercedes-Benz, MAN</p>
+    <div class="section-head reveal">
+      <span class="kicker">Visit the Workshop</span>
+      <h2 class="section-title">Contact <span>Us</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="card reveal">
+        <h3 style="margin-bottom:20px">Get In Touch</h3>
+        <div class="contact-list">
+          <a class="contact-item" href="tel:+918108820983"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Mobile</small><b>8108820983</b></div></a>
+          <a class="contact-item" href="mailto:mohdirfankhan7861@gmail.com"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Email</small><b>mohdirfankhan7861@gmail.com</b></div></a>
+          <div class="contact-item"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Address</small><b>District Hospital Gate No. 3, Khan Jan Seva Kendra, Basti, Uttar Pradesh</b></div></div>
+          <div class="contact-item"><span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><div><small>Timing</small><b>Mon–Sat: 9 AM – 7 PM · Sun: 10 AM – 4 PM</b><br><span style="color:var(--success);font-size:.9rem;font-weight:600">24/7 Breakdown Assistance Available</span></div></div>
+        </div>
+        <div class="brands-box">
+          <h3>We Diagnose All Brands</h3>
+          <ul class="chips" aria-label="Car brands">
+            <li>Maruti</li><li>Hyundai</li><li>Honda</li><li>Toyota</li><li>Tata</li><li>Mahindra</li><li>Kia</li><li>Renault</li><li>Nissan</li><li>Volkswagen</li><li>Ford</li><li>Chevrolet</li><li>Skoda</li><li>Mercedes</li><li>BMW</li><li>Audi</li><li>Jaguar</li><li>Land Rover</li><li>Volvo</li><li>EVs</li>
+          </ul>
+          <p style="color:var(--text-muted);font-size:.9rem"><b style="color:var(--text)">Trucks:</b> Tata, Ashok Leyland, Mahindra, Eicher, BharatBenz, Hyundai, Mercedes-Benz, MAN, JCB</p>
         </div>
       </div>
-      <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3562.123456789!2d82.1234567!3d26.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1s0x0%3A0x0!2zMjbCsDA3JzI0LjQiTiA4MsKwMDcnMjQuNSJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0;border-radius:10px" allowfullscreen loading="lazy"></iframe>
+
+      <div class="card map-card reveal">
+        <div class="map-frame">
+          <iframe title="Khan Automobile location on Google Maps – District Hospital, Basti" src="https://maps.google.com/maps?q=District%20Hospital%2C%20Basti%2C%20Uttar%20Pradesh&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="map-foot">
+          <div><b>District Hospital Gate No. 3</b><span>Khan Jan Seva Kendra, Basti, UP</span></div>
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=District%20Hospital%20Gate%203%2C%20Basti%2C%20Uttar%20Pradesh" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-nav"/></svg>Get Directions</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- Footer -->
-<footer>
+<footer class="site-footer">
   <div class="container">
-    <div class="footer-content">
-      <div class="footer-section"><h4>Services</h4><ul><li>Engine Diagnosis</li><li>ECU Programming</li><li>OBD Scanning</li><li>Electrical Repair</li><li>ABS & Airbag</li></ul></div>
-      <div class="footer-section"><h4>Contact</h4><ul><li>📞 8108820983</li><li>✉️ mohdirfankhan7861@gmail.com</li><li>📍 District Hospital Gate No. 3</li><li>🏙️ Basti, Uttar Pradesh</li></ul></div>
-      <div class="footer-section"><h4>Timings</h4><ul><li>Mon-Sat: 9 AM - 7 PM</li><li>Sunday: 10 AM - 4 PM</li><li>Emergency: 24/7</li></ul></div>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#home" class="brand" aria-label="Khan Automobile – back to top">
+          <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+          <span class="brand-text"><strong>Khan Automobile</strong><span>Advanced Diagnostic Center</span></span>
+        </a>
+        <p>Basti ka No.1 Advanced Car &amp; Truck Diagnostic Center | ECU Specialist | OBD Expert.</p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#diagnostics">Engine Diagnosis</a></li><li><a href="#diagnostics">ECU Programming</a></li><li><a href="#diagnostics">OBD Scanning</a></li><li><a href="#diagnostics">Electrical Repair</a></li><li><a href="#diagnostics">ABS &amp; Airbag</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+918108820983">8108820983</a></li><li><a href="mailto:mohdirfankhan7861@gmail.com">mohdirfankhan7861@gmail.com</a></li><li>District Hospital Gate No. 3</li><li>Basti, Uttar Pradesh</li></ul></div>
+      <div><h4>Timings</h4><ul><li>Mon–Sat: 9 AM – 7 PM</li><li>Sunday: 10 AM – 4 PM</li><li>Emergency: 24/7</li></ul></div>
     </div>
-    <hr style="border:1px solid #333;margin:20px 0">
-    <p>&copy; 2024 Khan Automobile Diagnostic Center & Garage, Basti. All Rights Reserved.</p>
-    <p>Basti ka No.1 Advanced Car & Truck Diagnostic Center | ECU Specialist | OBD Expert</p>
-    <p style="margin-top:10px">🔧 Any Vehicle, Any Problem, Right Diagnosis - 8108820983 🔧</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Khan Automobile Diagnostic Center &amp; Garage, Basti. All Rights Reserved.</p>
+      <p>Any Vehicle, Any Problem, Right Diagnosis.</p>
+    </div>
   </div>
 </footer>
 
-<!-- Scripts -->
-<script>
-/* hero slider */
-let currentIndex=0;const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot'),totalSlides=slides.length;
-function showSlide(index){slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[index].classList.add('active');dots[index].classList.add('active');}
-function nextSlide(){currentIndex=(currentIndex+1)%totalSlides;showSlide(currentIndex);}
-function currentSlide(index){currentIndex=index;showSlide(currentIndex);}
-setInterval(nextSlide,4000);
+<!-- Mobile quick actions -->
+<div class="fab-bar">
+  <a href="tel:+918108820983" class="btn btn-primary"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg>Call Now</a>
+  <a href="https://wa.me/918108820983" class="btn btn-whatsapp" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+</div>
 
-/* truck card image-slider */
-document.querySelectorAll('.img-slider').forEach(slider=>{
-  const imgs=slider.querySelectorAll('img');let i=0;
-  imgs[0].classList.add('active');
-  setInterval(()=>{
-    imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');
-  },3000);
-});
+<script>
+(() => {
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Header background on scroll */
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('scrolled', scrollY > 24);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Mobile menu: keep aria-expanded in sync, close on link tap */
+  const menu = document.getElementById('mobileMenu');
+  const menuBtn = document.getElementById('menuBtn');
+  menu.addEventListener('toggle', e => menuBtn.setAttribute('aria-expanded', e.newState === 'open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.hidePopover()));
+
+  /* Hero slider */
+  const slides = [...document.querySelectorAll('.hero-slides img')];
+  const dots = [...document.querySelectorAll('.hero-dots button')];
+  let current = 0, heroTimer;
+  const show = i => {
+    current = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('active', n === current));
+    dots.forEach((d, n) => d.setAttribute('aria-current', n === current));
+  };
+  const startHero = () => { if (!reduceMotion) heroTimer = setInterval(() => show(current + 1), 6000); };
+  dots.forEach((d, n) => d.addEventListener('click', () => { clearInterval(heroTimer); show(n); startHero(); }));
+  startHero();
+
+  /* Truck card image sliders — drop any image that fails to load, run only when visible */
+  document.querySelectorAll('.img-slider').forEach(slider => {
+    let imgs = [...slider.querySelectorAll('img')];
+    let i = 0, timer = null;
+    const counter = document.createElement('span');
+    counter.className = 'img-count'; counter.setAttribute('aria-hidden', 'true');
+    slider.appendChild(counter);
+    const render = () => {
+      imgs.forEach((img, n) => img.classList.toggle('active', n === i));
+      counter.textContent = imgs.length > 1 ? `${i + 1} / ${imgs.length}` : '';
+      counter.hidden = imgs.length < 2;
+    };
+    imgs.forEach(img => img.addEventListener('error', () => {
+      img.remove(); imgs = imgs.filter(x => x !== img);
+      if (i >= imgs.length) i = 0; render();
+    }));
+    render();
+    if (reduceMotion) return;
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !timer) {
+        timer = setInterval(() => { if (imgs.length > 1) { i = (i + 1) % imgs.length; render(); } }, 3200);
+      } else if (!entry.isIntersecting) { clearInterval(timer); timer = null; }
+    }, { threshold: .2 }).observe(slider);
+  });
+
+  /* Scrollspy for desktop nav */
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const byId = Object.fromEntries(links.map(a => [a.hash.slice(1), a]));
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && byId[e.target.id]) {
+        links.forEach(a => a.classList.remove('active'));
+        byId[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(byId).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
